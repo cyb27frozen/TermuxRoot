@@ -42,7 +42,8 @@ bash slash.sh
 ```
 
 ## Video Demo
-<iframe width="560" height="315" src="https://youtu.be/0E5W5woGDg4?si=jhIS0zrZNWo9gOJX" frameborder="0" allowfullscreen></iframe>
+
+[![Watch the video](https://media.tenor.com/t29YYCzYklQAAAAM/cli-k-me-by-mohonta-click-me-lc-mohonta.gif)](https://youtu.be/0E5W5woGDg4?si=jhIS0zrZNWo9gOJX)
 
 ## License
 
