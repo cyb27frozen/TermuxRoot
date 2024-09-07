@@ -1,0 +1,2 @@
+# The main termux repository:
+deb https://packages.termux.org/termux-main-21 stable main
