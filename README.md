@@ -41,6 +41,9 @@ cd storage/downloads/TermuxRoot-Script
 bash slash.sh
 ```
 
+## Video Demo
+<iframe width="560" height="315" src="https://youtu.be/0E5W5woGDg4?si=jhIS0zrZNWo9gOJX" frameborder="0" allowfullscreen></iframe>
+
 ## License
 
 MIT License
