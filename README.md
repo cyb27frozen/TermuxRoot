@@ -29,8 +29,17 @@ TermuxRoot-Script streamlines the installation and configuration process for Ter
 
 ## Usage
 
-1. Run the script to automate the setup process
-2. Follow the prompts to configure your Termux environment
+1. Follow the prompts to configure your Termux environment
+```bash
+termux-setup-storage
+```
+```bash
+cd storage/downloads/TermuxRoot-Script
+```
+2. Run the script to automate the setup process
+```bash
+bash slash.sh
+```
 
 ## License
 
