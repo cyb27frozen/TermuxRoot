@@ -24,7 +24,7 @@ TermuxRoot-Script streamlines the installation and configuration process for Ter
 ## Installation
 
 1. Download the [Termux offline bootstrap Apk](https://archive.org/download/termux-repositories-legacy/termux-v0.79-offline-bootstraps.apk) and install
-2. Download [TermuxRoot-Script](https://archive.org/download/termuxroot-script/TermuxRoot-Script.zip) as zip file and extract file
+2. Download [TermuxRoot-Script](https://archive.org/download/termuxroot-script/TermuxRoot-Script.zip) as zip file
 3. Open Termux App and follow [usage](#usage) prompts
 
 ## Usage
@@ -33,12 +33,13 @@ TermuxRoot-Script streamlines the installation and configuration process for Ter
 ```bash
 termux-setup-storage
 ```
+2. Extract zip file
 ```bash
-cd storage/downloads/TermuxRoot-Script
+unzip storage/downloads/TermuxRoot-Script.zip
 ```
 2. Run the script to automate the setup process
 ```bash
-bash slash.sh
+bash TermuxRoot-Script/slash.sh
 ```
 
 ## Video Demo
