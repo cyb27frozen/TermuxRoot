@@ -101,7 +101,7 @@ printf "\n${RED}Show your support by liking, sharing, commenting, and subscribin
 
 sleep 5
 
-xdg-open https://youtu.be/XYpnoNAPYas?si=uatJCpQGzlRg33HY
+xdg-open https://youtu.be/XYpnoNAPYas?si=qU6RP42zB1dJhlQa
 
 clear
 
