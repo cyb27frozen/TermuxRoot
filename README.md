@@ -23,9 +23,9 @@ TermuxRoot-Script streamlines the installation and configuration process for Ter
 
 ## Installation
 
-1. Download the [Termux offline bootstrap Apk](https://archive.org/download/termux-repositories-legacy/termux-v0.79-offline-bootstraps.apk) 
-2. Download TermuxRoot-Script as zip file
-3. Run the script and follow the prompts
+1. Download the [Termux offline bootstrap Apk](https://archive.org/download/termux-repositories-legacy/termux-v0.79-offline-bootstraps.apk) and install
+2. Download [TermuxRoot-Script](https://archive.org/download/termuxroot-script/TermuxRoot-Script.zip) as zip file and extract file
+3. Open Termux App and follow [usage](#usage) prompts
 
 ## Usage
 
