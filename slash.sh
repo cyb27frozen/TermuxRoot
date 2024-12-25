@@ -1,9 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # Define colors for output
-#!/bin/bash
-
-# define colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
@@ -14,98 +11,91 @@ CYAN='\033[0;36m'
 WHITE='\033[0;37m'
 NC='\033[0m' # No Color
 
+# Clear the screen
 clear
-# banner
-echo -e "${CYAN}"
-echo -e " _______                          __        "
-echo -e " /       \                       /  |       "
-echo -e " $$$$$$$  |   ______    ______   _$$ |_      "
-echo -e " $$ |__$$ |  /      \  /      \ / $$   |     "
-echo -e " $$    $$< /$$$$$$  |/$$$$$$ |$$$$$$/     "
-echo -e " $$$$$$$  |$$ |   $$ |$$ |  $$ |  $$ | __   "
-echo -e " $$ |   $$ |$$ \_  $$ |$$ \__$$ |  $$ |/  |  "
-echo -e " $$ |   $$ |$$    $$/ $$    $$/   $$  $$/ "
-echo -e " $$/   $$/  $$$$$$/   $$$$$$/     $$$$/  "
-echo -e "${WHITE}"
 
+# Draw the banner in a container
+banner_top="┌──────────────────────────────────────────────────────────────────────────┐"
+banner_bottom="└──────────────────────────────────────────────────────────────────────────┘"
+banner_content=(
+    " ████████╗███████╗██████╗ ███╗   ██╗██╗   ██╗███╗   ███╗ ██████╗ ██████╗  ██████╗ ████████╗ "
+    " ╚══██╔══╝██╔════╝██╔══██╗████╗  ██║██║   ██║████╗ ████║██╔══██╗██╔══██╗██╔═══██╗╚══██╔══╝ "
+    "    ██║   █████╗  ██████╔╝██╔██╗ ██║██║   ██║██╔████╔██║██║  ██║██████╔╝██║   ██║   ██║    "
+    "    ██║   ██╔══╝  ██╔═══╝ ██║╚██╗██║██║   ██║██║╚██╔╝██║██║  ██║██╔═══╝ ██║   ██║   ██║    "
+    "    ██║   ███████╗██║     ██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██████╔╝██║     ╚██████╔╝   ██║    "
+    "    ╚═╝   ╚══════╝╚═╝     ╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚═╝      ╚═════╝    ╚═╝    "
+)
 
-# Show loading animation
-echo -e "${YELLOW}Loading...${GREEN}"
-spin='-\|/'
-for i in {1..6}; do
-    printf "\b${spin:i%${#spin}:1}"
-    sleep 1
+# Print the banner container
+echo -e "${CYAN}${banner_top}${NC}"
+for line in "${banner_content[@]}"; do
+    printf " ${CYAN}│${NC} %-72s ${CYAN}│${NC}\n" "$line"
 done
+printf " ${CYAN}│${NC}%70s${CYAN} By: Sci Frozen ${CYAN}│${NC}\n" ""
+echo -e "${CYAN}${banner_bottom}${NC}"
 
-# Prompt user for name
-read -p "$(echo -e ${PURPLE}Welcome to the lab! Let\'s set our lab to a more secure tomorrow. Your name please! ${NC})" name
-
-# Print welcome message
-printf "\n${GRAY}Perfect, %s!${NC}\n" "$name"
+# Loading animation
+echo -ne "${YELLOW}Initializing environment..."
+for i in {1..10}; do
+    echo -ne "${CYAN}█"
+    sleep 0.2
+done
+echo -e "${GREEN} DONE!${NC}"
 sleep 1
-printf "
-${BLUE}This script will 
- move some files to your Termux /data folder
- 	and update pkgs .${NC}\n
- 	"
+
+# Ask for user name
+echo -e "${PURPLE}Welcome to Termux-Root, your hub for secure scripts and innovation.${NC}"
+read -p "$(echo -e ${GREEN}Please enter your name:${NC} ) " name
+echo -e "${GRAY}Hello, ${YELLOW}$name${GRAY}! Preparing your secure setup...${NC}"
 sleep 2
-# Check if folder exists
-if [ -d /data/data/com.termux/files/home/TermuxRoot-Script ]; then
-    echo -e "${YELLOW}Running script...${NC}"
-else
-    echo -e "${RED}Error: The folder /data/data/com.termux/files/home/TermuxRoot-Script
-    doesn't exist.
-    Please extract the zip file to this location and try again.${NC}"
+
+# Check and validate folder existence
+if [ ! -d /data/data/com.termux/files/home/TermuxRoot-Script ]; then
+    echo -e "${RED}Error:${NC} Required folder not found. Ensure TermuxRoot-Script is correctly placed and try again."
     exit 1
 fi
 
-# Move files to Termux /data folder
-printf "Moving files...\n"
+# File operations
+echo -e "${BLUE}Moving necessary files...${NC}"
 sleep 1
 mv -f TermuxRoot-Script/sources.list TermuxRoot-Script/trusted.gpg /data/data/com.termux/files/usr/etc/apt
-printf "${GREEN}sources.list and trusted.gpg moved${NC}\n"
-sleep 1
+echo -e "${GREEN}✓ Moved sources.list and trusted.gpg.${NC}"
+
 cd TermuxRoot-Script/sources.list.d
-printf "Mounting to sources.list.d folder...${NC}\n"
-sleep 1
+echo -e "${BLUE}Updating sources.list.d...${NC}"
 mv -f *.list /data/data/com.termux/files/usr/etc/apt/sources.list.d
-printf "${GREEN}Sources.list.d files moved${NC}\n"
-sleep 1
+echo -e "${GREEN}✓ Sources.list.d files moved.${NC}"
+
 cd ../trusted.gpg.d
-printf "Mounting to trusted.gpg.d folder...${NC}\n"
-sleep 1
+echo -e "${BLUE}Updating trusted.gpg.d...${NC}"
 mv -f *.gpg /data/data/com.termux/files/usr/etc/apt/trusted.gpg.d
-printf "${GREEN}Trusted.gpg.d files moved${NC}\n"
-sleep 1
+echo -e "${GREEN}✓ Trusted.gpg.d files moved.${NC}"
 
-# Print completion message
-printf "\n${GREEN}All files moved successfully.${NC}\n"
+# Prompt for package update
+read -p "$(echo -e ${CYAN}Would you like to update all packages now? [Y/n]:${NC} ) " update_choice
 
-# Ask user if they want to update packages
-read -p "$(echo -e ${CYAN}Do you want to update packages automatically?${NC} [Y/n] )" answer
-
-if [ "$answer" != "${answer#[Yy]}" ]; then
-    printf "\n${YELLOW}Updating packages...${NC}\n"
-    apt-get update && apt upgrade
-    pkg update && pkg upgrade
-    printf "\n${GREEN}Package installation complete. Enjoy!${NC}\n"
+if [[ "$update_choice" =~ ^[Yy]$ ]]; then
+    echo -e "${YELLOW}Updating packages, please wait...${NC}"
+    apt-get update && apt-get upgrade -y
+    pkg update && pkg upgrade -y
+    echo -e "${GREEN}✓ Packages updated successfully.${NC}"
 else
-    printf "\n${GREEN}Skipping package updates for now.${NC}\n"
+    echo -e "${GRAY}Skipping updates as per your choice.${NC}"
 fi
 
-sleep 5
+# Direct user to YouTube channel
+echo -e "${GREEN}Setup complete, $name! Show your support by subscribing to our YouTube channel.${NC}"
+echo -e "${BLUE}Opening YouTube now...${NC}"
+sleep 2
 
+xdg-open "https://youtube.com/@scifrozen-yt?si=FXFPDDJIGJa59W95"
+
+echo -e "${PURPLE}Thank you for using Termux-Root. Goodbye!${NC}"
+sleep 2
 clear
 
-printf "\n${RED}Show your support by liking, sharing, commenting, and subscribing for more updates!${NC}😉\n"
-
-sleep 5
-
-xdg-open https://youtu.be/XYpnoNAPYas?si=qU6RP42zB1dJhlQa
-
-clear
-
-cd
-
-rm /data/data/com.termux/files/home/storage/downloads/TermuxRoot-Script.zip
+# Cleanup and exit
+echo -e "${PURPLE}Cleaning up temporary files...${NC}"
+rm -f /data/data/com.termux/files/home/storage/downloads/TermuxRoot-Script.zip
 rm -rf /data/data/com.termux/files/home/TermuxRoot-Script
+sleep 1
